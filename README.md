@@ -29,7 +29,7 @@ You can verify your versions with:
 ```bash
 node -v
 npm -v
-
+```
 ![best-shop-index](https://github.com/user-attachments/assets/59a06035-6cd5-4c6d-9d39-5851f9d7b495)
 
 ![best-shop-catalog](https://github.com/user-attachments/assets/86091fa6-a5c0-4243-8044-432b9df3b5a5)
