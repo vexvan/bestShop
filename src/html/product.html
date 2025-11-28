@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Product</title>
+  <link rel="stylesheet" href="/src/dist/main.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300..800&family=Montserrat:wght@100..900&display=swap");
+  </style>
+</head>
+
+<body data-page="product">
+  <header id="site-header"></header>
+
+  <main>
+    <div class="product-details-container layout-container padding-top-6">
+      <div class="media-container-left">
+        <div class="product-mainimg-placeholder">
+          <img id="data-product-main-image" src="/src/assets/product-details-img/poductmainimg.png" alt="closed right">
+        </div>
+        <div class="product-miniimg-container">
+          <div class="product-miniimg-placeholder">
+            <img src="/src/assets/product-details-img/miniclosedright.png" alt="closed right">
+          </div>
+          <div class="product-miniimg-placeholder">
+            <img src="/src/assets/product-details-img/miniclosedtop.png" alt="closed top">
+          </div>
+          <div class="product-miniimg-placeholder">
+            <img src="/src/assets/product-details-img/miniopenright.png" alt="open right">
+          </div>
+          <div class="product-miniimg-placeholder">
+            <img src="/src/assets/product-details-img/miniopentop.png" alt="open top">
+          </div>
+        </div>
+      </div>
+      <div class="body-container-right">
+        <div class="product-title-container">
+          <h3 id="data-product-title">Global Explorer Max Comfort Suitcase Pro</h3>
+          <div class="stars-review-container">
+           <div class="stars-review-container">
+  <div
+    class="pr-stars-container"
+    id="data-product-rating-stars"
+  >
+    <!-- stars injected here -->
+  </div>
+</div>
+            <p class="main-description">(1 Clients Review)</p>
+          </div>
+          <p id="data-product-price">$250</p>
+        </div>
+        <div class="product-text-container">
+          <p class="main-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita obcaecati, reprehenderit earum quaerat
+            voluptas quisquam amet architecto veritatis rem minima sint placeat quia officia facilis, recusandae
+            dignissimos error voluptate atque? Lorem ipsum dolor.</p>
+          <p class="main-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eligendi, ut nulla atque quia iusto architecto
+            eveniet dolores rerum dolorum illum placeat laborum officia et soluta. Expedita obcaecati sint placeat quia officia facilis, recusandae.</p>
+        </div>
+<div class="product-dropdown-container">
+  <div class="product-dropdown">
+    <label id="product-size-label" for="product-size-button">
+      Size
+    </label>
+
+    <div
+      class="sorting-dropdown"
+      id="product-size-dropdown"
+      aria-labelledby="product-size-label"
+    >
+      <button
+        class="sorting-dropdown-button"
+        id="product-size-button"
+        type="button"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+      >
+        <span
+          class="sorting-dropdown-label"
+          id="product-size-label-text"
+        >
+          Choose option
+        </span>
+        <img
+          src="/src/assets/img/arrow-dropdown.svg"
+          alt=""
+          class="sorting-dropdown-icon"
+        />
+      </button>
+      <ul
+        class="sorting-dropdown-menu"
+        id="product-size-menu"
+      ></ul>
+    </div>
+
+    <input type="hidden" id="product-size-value" />
+  </div>
+
+  <div class="product-dropdown">
+    <label id="product-color-label" for="product-color-button">
+      Color
+    </label>
+
+    <div
+      class="sorting-dropdown"
+      id="product-color-dropdown"
+      aria-labelledby="product-color-label"
+    >
+      <button
+        class="sorting-dropdown-button"
+        id="product-color-button"
+        type="button"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+      >
+        <span
+          class="sorting-dropdown-label"
+          id="product-color-label-text"
+        >
+          Choose option
+        </span>
+        <img
+          src="/src/assets/img/arrow-dropdown.svg"
+          alt=""
+          class="sorting-dropdown-icon"
+        />
+      </button>
+      <ul
+        class="sorting-dropdown-menu"
+        id="product-color-menu"
+      ></ul>
+    </div>
+
+    <input type="hidden" id="product-color-value" />
+  </div>
+
+  <div class="product-dropdown">
+    <label
+      id="product-category-label"
+      for="product-category-button"
+    >
+      Category
+    </label>
+
+    <div
+      class="sorting-dropdown"
+      id="product-category-dropdown"
+      aria-labelledby="product-category-label"
+    >
+      <button
+        class="sorting-dropdown-button"
+        id="product-category-button"
+        type="button"
+        aria-haspopup="listbox"
+        aria-expanded="false"
+      >
+        <span
+          class="sorting-dropdown-label"
+          id="product-category-label-text"
+        >
+          Choose option
+        </span>
+        <img
+          src="/src/assets/img/arrow-dropdown.svg"
+          alt=""
+          class="sorting-dropdown-icon"
+        />
+      </button>
+      <ul
+        class="sorting-dropdown-menu"
+        id="product-category-menu"
+      ></ul>
+    </div>
+
+    <input type="hidden" id="product-category-value" />
+  </div>
+</div>
+
+        <div class="product-cta-container">
+          <div class="cta-container">
+            <div class="counter">counter componens</div>
+            <div class="button">
+              <button
+  class="button-pink button-pink-40"
+  id="product-add-to-cart"
+  type="button"
+>
+  Add to cart
+</button>
+            </div>
+          </div>
+          <div class="payment-container">
+            <p>Payments:</p>
+            <div class="payment-icon-placeholder">
+              <img src="/src/assets/img/visa-pay-logo.svg" alt="visa">
+            </div>
+            <div class="payment-icon-placeholder">
+              <img src="/src/assets/img/american-express-logo.svg" alt="american express">
+            </div>
+            <div class="payment-icon-placeholder">
+              <img src="/src/assets/img/master.svg" alt="mastercard">
+            </div>
+            <div class="payment-icon-placeholder">
+              <img src="/src/assets/img/paypal-logo.svg" alt="paypal">
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    </div>
+
+        <div class="product-content-section layout-container">
+      <div class="product-menu">
+        <nav class="product-content-header">
+          <ul>
+            <li>
+              <a href="">details</a>
+            </li>
+            <li>
+              <a href="" class="active">reviews</a>
+            </li>
+            <li>
+              <a href="">shipping policy</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="contatnt-main-body-container">
+        <div class="contant-left-side">
+          <p class="contant-tittle">1 review for Global Explorer Max Comfort Suitcase Pro</p>
+          <div class="reviews-container">
+            <div class="madia-left-side">
+              <div class="media-placeholder">
+                <img src="" alt="">
+              </div>
+            </div>
+            <div class="contant-body-right-side">
+              <div class="contant-body-header">
+                <div class="review-text-container main-description">
+                  <div class="reviwe-name">
+                    <p>Ella Harper</p>
+                  </div>
+                  <div class="reviwe-date">
+                    <p>/June </p>
+                  </div>
+                </div>
+                <div class="reviwe-stars">
+                  <div>1</div>
+                  <div>2</div>
+                  <div>3</div>
+                  <div>4</div>
+                  <div>5</div>
+                </div>
+              </div>
+              <div class="contant-body-main">
+                <div class="review-text main-description">
+                  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta officia praesentium natus
+                    accusantium voluptate nemo sapiente velit magni consectetur dolor!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="contant-right-side">
+          <p class="contant-tittle">Add Review</p>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. </p>
+
+          <div class="rate-product-container">
+            <div>
+              <p class="contant-tittle">rate product:</p>
+            </div>
+            <div class="reviwe-stars">
+              <div>1</div>
+              <div>2</div>
+              <div>3</div>
+              <div>4</div>
+              <div>5</div>
+            </div>
+          </div>
+
+          <div class="form-field-container">
+            <div class="review-form-item-textarea">
+              <div class="textarea-wrapper">
+                <textarea id="message" name="message" rows="7" placeholder=" " required></textarea>
+                <label for="message" class="fake-placeholder fake-placeholder-textarea">
+                  Your Review<span class="star">*</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="review-form-row">
+              <div class="review-form-item">
+                <div class="input-wrapper">
+                  <input type="text" id="name" name="name" placeholder=" " required />
+                  <label for="name" class="fake-placeholder">
+                    Your Name<span class="star">*</span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="review-form-item">
+                <div class="input-wrapper">
+                  <input type="email" id="email" name="email" placeholder=" " required />
+                  <label for="email" class="fake-placeholder">
+                    Your Email Address<span class="star">*</span>
+                  </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="review-save-data">
+            <input type="checkbox" id="save-data" name="save-data" />
+            <label for="save-data">
+              Save my name, email, and website in this browser for when I leave another comment.
+            </label>
+          </div>
+
+          <button class="button-pink button-pink-40">submit</button>
+        </div>
+
+
+      </div>
+    </div>
+    <section class="padding-top-6" id="site-benefits"></section>
+  </main>
+  <footer id="site-footer"></footer>
+
+  <script type="module" src="/src/js/main.js"></script>
+</body>
+
+</html>

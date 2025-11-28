@@ -1,0 +1,220 @@
+@use "../abstracts/index" as *;
+
+// ===============================
+// Login modal tokens
+// ===============================
+$login-modal-z-index: 999;
+$login-modal-transition-duration: 0.2s;
+$login-modal-overlay-color: $overlay;
+$login-modal-max-width: 24rem;
+$login-modal-padding: 4rem 2.25rem 3rem;
+$login-modal-border-radius: 0;
+$login-modal-shadow: 0 20px 80px rgb(0 0 0 / 18%);
+$login-modal-close-offset: 0.75rem;
+$login-modal-field-gap: 1rem;
+$login-modal-field-label-gap: 0.25rem;
+$login-modal-row-gap: 0.75rem;
+$login-modal-input-height: 2.5rem;
+$login-modal-input-padding-x: 0.75rem;
+$login-modal-input-border-width: 2px;
+$login-modal-checkbox-size: 1rem;
+$login-modal-remember-font-size: $font-size-9;
+$login-modal-forgot-font-size: $font-size-9;
+$login-modal-password-padding-right: 2.5rem;
+$login-modal-password-toggle-right: 0.5rem;
+$login-modal-eye-icon-size: 1rem;
+
+// ===============================
+// Login modal component
+// ===============================
+.login-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: $font-montserrat;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity $login-modal-transition-duration ease,
+    visibility $login-modal-transition-duration ease;
+  z-index: $login-modal-z-index;
+
+  &.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  &-overlay {
+    position: absolute;
+    inset: 0;
+    background: $login-modal-overlay-color;
+  }
+
+  &-dialog {
+    position: relative;
+    z-index: 1;
+    max-width: $login-modal-max-width;
+    width: 100%;
+    padding: $login-modal-padding;
+    background-color: $white;
+    border-radius: $login-modal-border-radius;
+    box-shadow: $login-modal-shadow;
+    font-family: $font-montserrat;
+  }
+
+  &-close {
+    position: absolute;
+    top: $login-modal-close-offset;
+    right: $login-modal-close-offset;
+    border: 0;
+    background: transparent;
+    font-size: $font-size-20;
+    line-height: 1;
+    cursor: pointer;
+  }
+
+  // Form layout
+  &-form {
+    display: flex;
+    flex-direction: column;
+    gap: $login-modal-field-gap;
+  }
+
+  &-field {
+    display: flex;
+    flex-direction: column;
+    gap: $login-modal-field-label-gap;
+  }
+
+  &-label {
+    font-size: $font-size-15;
+    font-weight: $font-weight-regular;
+  }
+
+  &-input {
+    height: $login-modal-input-height;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0 $login-modal-input-padding-x;
+    border: $login-modal-input-border-width solid $light-grey;
+    border-radius: 0;
+    font-family: $font-montserrat;
+    font-size: $font-size-15;
+
+    &:focus {
+      outline: none;
+      border-color: $pink;
+    }
+  }
+
+  &-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: $login-modal-row-gap;
+    font-size: $font-size-15;
+  }
+
+  &-checkbox-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    cursor: pointer;
+
+    .login-modal-checkbox {
+      width: $login-modal-checkbox-size;
+      height: $login-modal-checkbox-size;
+      cursor: pointer;
+      appearance: none;
+      border: 2px solid $grey;
+      background-color: $white;
+      display: inline-block;
+      position: relative;
+    }
+
+    .login-modal-checkbox:checked {
+      background-color: $white;
+      border-color: $grey;
+    }
+
+    .login-modal-checkbox:checked::after {
+      content: "";
+      position: absolute;
+      left: 0.25rem;
+      width: 0.35rem;
+      height: 0.7rem;
+      border-right: 2px solid $grey;
+      border-bottom: 2px solid $grey;
+      transform: rotate(45deg);
+    }
+  }
+
+  &-remember-text {
+    color: $grey;
+    font-size: $login-modal-remember-font-size;
+  }
+
+  &-forgot-link {
+    font-size: $login-modal-forgot-font-size;
+    font-weight: $font-weight-bold;
+    text-decoration: none;
+    color: $pink;
+    cursor: pointer;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  // CTA button tweaks
+  .button-pink-40 {
+    text-transform: uppercase;
+    font-size: $font-size-12;
+    font-weight: $font-weight-bold;
+  }
+
+  // Password field wrapper
+  &-password-wrapper {
+    position: relative;
+    width: 100%;
+
+    .login-modal-input {
+      padding-right: $login-modal-password-padding-right;
+    }
+  }
+
+  // Eye toggle button
+  &-toggle-password {
+    margin: 0;
+    padding: 0;
+    border: none;
+    background: none;
+    font: inherit;
+    color: inherit;
+    line-height: 1;
+    cursor: pointer;
+    appearance: none;
+    position: absolute;
+    right: $login-modal-password-toggle-right;
+    top: 50%;
+    transform: translateY(-50%);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    &:focus-visible {
+      outline: 2px solid $pink;
+      outline-offset: 2px;
+    }
+  }
+
+  &-toggle-password-icon {
+    width: $login-modal-eye-icon-size;
+    height: $login-modal-eye-icon-size;
+    display: block;
+  }
+}

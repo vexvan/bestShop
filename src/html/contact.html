@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Home</title>
+    <link rel="stylesheet" href="/src/dist/main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300..800&family=Montserrat:wght@100..900&display=swap");
+    </style>
+  </head>
+
+  <body data-page="contact">
+    <div id="site-header"></div>
+    <main>
+      <section class="hero-section" id="hero-section"></section>
+      <section
+        class="why-choose-section layout-container padding-top-6"
+        id="why-choose-us"
+      ></section>
+      <section class="feedback-section layout-container padding-top-6">
+        <div class="feedback-main-container">
+          <div class="feedback-img-placeholder">
+            <img src="/src/assets/about-us-img/.png" alt="feedback" />
+          </div>
+
+          <div class="feedback-right-side">
+            <div class="feedback-text">
+              <h3>Your Feedback is Much Appreciated!</h3>
+              <p class="main-description feedback-details">
+                We will contact you when you complete the following form!
+              </p>
+            </div>
+
+            <form id="feedback-form" class="form-field-container" novalidate>
+              <div class="feedback-form-item">
+                <label for="name">
+                  Your Name <span class="required-star">*</span>
+                </label>
+                <input type="text" id="name" name="name" />
+              </div>
+
+              <div class="feedback-form-item">
+                <label for="email">
+                  Your Email Address <span class="required-star">*</span>
+                </label>
+                <input type="email" id="email" name="email" />
+              </div>
+
+              <div class="feedback-form-item">
+                <label for="topic">
+                  Topic <span class="required-star">*</span>
+                </label>
+                <input type="text" id="topic" name="topic" />
+              </div>
+
+              <div class="feedback-form-item">
+                <label for="message">
+                  Your Message <span class="required-star">*</span>
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="7"
+                  cols="33"
+                ></textarea>
+              </div>
+
+              <button class="button-pink button-pink-60" type="submit">
+                Send
+              </button>
+
+              <p
+                class="feedback-status"
+                data-feedback-status
+              ></p>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section class="padding-top-6" id="site-benefits"></section>
+    </main>
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>

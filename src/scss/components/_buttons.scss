@@ -1,0 +1,68 @@
+@use "sass:color";
+@use "../abstracts/index" as *;
+
+// Base button primitive
+%btn-base {
+  cursor: pointer;
+  border-radius: 0;
+  font-family: $font-montserrat;
+  font-weight: $font-weight-bold;
+  border-width: 1px;
+  border-style: solid;
+  padding: 0.75rem 1.5rem;
+  font-size: $font-size-15;
+
+  // shared transitions
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    color 0.15s ease,
+    transform 0.05s ease;
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus-visible {
+    outline: none;
+  }
+}
+
+.btn {
+  @extend %btn-base;
+
+  text-transform: uppercase;
+}
+
+.btn-secondary {
+  @extend %btn-base;
+
+  background-color: $btn-secondary-bg;
+  color: $btn-secondary-text;
+  border: 0;
+  text-transform: uppercase;
+
+  &:hover {
+    background-color: color.adjust($btn-secondary-bg, $lightness: -5%);
+  }
+}
+
+.button-pink {
+  @extend %btn-base;
+
+  background-color: $pink;
+  color: $white;
+  border: none;
+  padding: 0 1.5rem;
+  margin: 0;
+
+  &-60 {
+    height: 3.75rem;
+    font-size: $font-size-18;
+  }
+
+  &-40 {
+    height: 2.5rem;
+    font-size: $font-size-17;
+  }
+}

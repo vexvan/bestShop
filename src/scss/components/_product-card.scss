@@ -1,0 +1,215 @@
+@use "../abstracts/index"as *;
+
+// ===============================
+// Product details tokens
+// ===============================
+$product-details-gap: 2.5rem;
+$product-media-max-width: 645px;
+$product-media-main-aspect-ratio: 645 / 860;
+$product-media-main-gap: 0.5rem;
+$product-media-thumbs-columns: 4;
+$product-media-thumbs-gap: 0.5rem;
+$product-media-thumb-aspect-ratio: 150 / 148;
+$product-right-padding-inline: 2.5rem;
+$product-title-gap: 0.25rem;
+$product-stars-gap: 0.5rem;
+$product-stars-padding-y: 0.5rem;
+
+// temporary placeholder
+$product-stars-bg: $white;
+$product-dropdown-gap: 1.5rem;
+$product-cta-grid-columns: 1fr 3fr;
+$product-cta-gap: 1rem;
+$product-payment-gap: 1rem;
+$product-payment-font-size: 23px;
+$product-payment-icon-max-width: 60px;
+$product-payment-icon-aspect-ratio: 60 / 28;
+
+// ===============================
+// Product details layout
+// ===============================
+.product-details-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $product-details-gap;
+
+    @include respond(md) {
+        grid-template-columns: 1fr;
+    }
+
+    // ===========================
+    // Left media column
+    // ===========================
+    .media-container-left {
+        display: grid;
+        grid-template-rows: 5fr 1fr;
+        width: 100%;
+        max-width: $product-media-max-width;
+        gap: $product-media-main-gap;
+        margin: 0;
+    }
+
+    .product-mainimg-placeholder {
+        position: relative;
+        width: 100%;
+        max-width: $product-media-max-width;
+        max-height: 860px;
+        aspect-ratio: $product-media-main-aspect-ratio;
+        background-color: $light-grey;
+
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+
+    .product-miniimg-container {
+        display: grid;
+        grid-template-columns: repeat($product-media-thumbs-columns, minmax(0, 1fr));
+        gap: $product-media-thumbs-gap;
+        width: 100%;
+        max-width: $product-media-max-width;
+
+        .product-miniimg-placeholder {
+            width: 100%;
+            aspect-ratio: $product-media-thumb-aspect-ratio;
+            background-color: $light-grey;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+    }
+
+    // ===========================
+    // Right body column
+    // ===========================
+    .body-container-right {
+        display: grid;
+
+        // original was invalid "grid-row: 1fr 2fr 2f 1fr"
+        // this makes it explicit & valid but visually similar (auto rows)
+        grid-template-rows: auto auto auto auto;
+
+        .product-title-container {
+            display: flex;
+            flex-direction: column;
+            gap: $product-title-gap;
+            padding-right: $product-right-padding-inline;
+
+            .main-description {
+                font-size: $font-size-12;
+            }
+
+            >h3 {
+                font-size: $font-size-30;
+            }
+
+            p {
+                margin: 0;
+                font-size: $font-size-20;
+                font-weight: $font-weight-bold;
+            }
+
+            .stars-review-container {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                gap: $product-stars-gap;
+
+                .pr-stars-container {
+                    padding: $product-stars-padding-y 0;
+                    background-color: $product-stars-bg;
+                }
+
+
+            }
+        }
+
+        .product-text-container {
+            .main-description {
+                padding: 1rem 0;
+            }
+        }
+
+        .product-dropdown-container {
+            display: flex;
+            flex-direction: column;
+            gap: $product-dropdown-gap;
+            padding-right: $product-right-padding-inline;
+
+            label {
+                font-family: $font-montserrat;
+                font-size: $font-size-17;
+                font-weight: $font-weight-bold;
+                color: $grey-text-bg;
+            }
+        }
+
+        .product-cta-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .cta-container {
+            display: grid;
+            grid-template-columns: $product-cta-grid-columns;
+            align-items: center;
+            column-gap: $product-cta-gap;
+            padding-right: $product-right-padding-inline;
+
+            .button {
+                justify-self: stretch;
+                width: 100%;
+            }
+
+            .button-pink.button-pink-40 {
+                width: 100%;
+                display: block;
+            }
+        }
+
+        .payment-container {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-start;
+            align-items: center;
+            gap: $product-payment-gap;
+            padding-right: $product-right-padding-inline;
+
+            p {
+                margin: 0;
+                font-family: $font-montserrat;
+                font-size: $product-payment-font-size;
+                font-weight: $font-weight-bold;
+                color: $grey;
+            }
+
+            .payment-icon-placeholder {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                max-width: $product-payment-icon-max-width;
+                aspect-ratio: $product-payment-icon-aspect-ratio;
+                overflow: hidden;
+
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    width: auto;
+                    height: auto;
+                    object-fit: contain;
+                    display: block;
+                }
+            }
+        }
+    }
+}

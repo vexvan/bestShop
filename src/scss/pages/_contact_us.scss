@@ -1,0 +1,146 @@
+@use "../abstracts/index" as *;
+
+// ===============================
+// Feedback section tokens
+// ===============================
+$feedback-gap: 2rem;
+$feedback-img-max-width: 39.1875rem;
+$feedback-img-max-height: 43.75rem;
+$feedback-heading-font-size: 1.5625rem;
+$feedback-label-font-size: $font-size-18;
+$feedback-input-height: 2.5rem;
+$feedback-input-border-width: 2px;
+$feedback-input-padding-x: 0.75rem;
+$feedback-textarea-padding: 0.75rem;
+
+// ===============================
+// Headline + intro text
+// ===============================
+.feedback-text {
+  h3 {
+    margin: 0;
+    padding-bottom: 2rem;
+    font-family: $font-montserrat;
+    font-size: $feedback-heading-font-size;
+    font-weight: $font-weight-bold;
+    color: $black;
+  }
+
+  p {
+    color: $black;
+  }
+}
+
+// ===============================
+// Layout
+// ===============================
+.feedback-main-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $feedback-gap;
+
+  @include respond(md) {
+    grid-template-columns: 1fr;
+    align-items: start;
+  }
+}
+
+// ===============================
+// Left: image
+// ===============================
+.feedback-img-placeholder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: $feedback-img-max-width;
+  max-height: $feedback-img-max-height;
+  background-color: $light-grey;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @include respond(sm) {
+    max-height: 20rem;
+  }
+}
+
+// ===============================
+// Right: form
+// ===============================
+.feedback-right-side {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: $feedback-gap;
+  max-height: $feedback-img-max-height;
+  text-align: left;
+
+  @include respond(md) {
+    max-height: none;
+  }
+
+  .form-field-container {
+    display: flex;
+    flex-direction: column;
+    gap: $feedback-gap;
+    width: 100%;
+
+    .required-star {
+      color: $pink;
+    }
+  }
+
+  .feedback-form-item {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    label {
+      padding-bottom: 0.5rem;
+      font-family: $font-montserrat;
+      font-size: $feedback-label-font-size;
+      font-weight: $font-weight-bold;
+    }
+
+    input {
+      height: $feedback-input-height;
+    }
+
+    input,
+    textarea {
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      display: block;
+      padding: 0 $feedback-input-padding-x;
+      border: $feedback-input-border-width solid $pink;
+      font-family: $font-montserrat;
+      font-size: $font-size-17;
+
+      &:focus {
+        outline: none;
+        border-color: $pink;
+      }
+    }
+
+    textarea {
+      padding: $feedback-textarea-padding;
+      min-height: 7rem;
+      resize: vertical;
+    }
+  }
+
+  // Submit button inside the form
+  > .button-pink {
+    align-self: flex-start;
+    width: auto;
+    text-transform: uppercase;
+    font-size: $font-size-12;
+  }
+}

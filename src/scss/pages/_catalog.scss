@@ -1,0 +1,419 @@
+@use "../abstracts/index"as *;
+@use "sass:color";
+@use "sass:map";
+
+// ===============================
+// Catalog layout tokens
+// ===============================
+$catalog-layout-grid-columns: 910px auto;
+$catalog-layout-left-max-width: 910px;
+$catalog-layout-right-gutter: 2.5rem;
+
+// ===============================
+// Filter panel tokens
+// ===============================
+$catalog-filters-bg: $white;
+$catalog-filters-border-color: $pink;
+$catalog-filters-border-width: 3px;
+$catalog-filters-panel-padding-y: 0;
+$catalog-filters-panel-padding-x: 0;
+$catalog-filters-row-padding-y: 1.7rem;
+$catalog-filters-row-margin-bottom: 2.5rem;
+$catalog-filters-gap-inline: 1.5rem;
+$catalog-filters-gap-block: 1rem;
+$catalog-filters-label-color: $grey-text-bg;
+$catalog-filters-label-font-size: 0.85rem;
+$catalog-filters-label-padding-bottom: 0.5rem;
+$catalog-filter-group-min-width: 140px;
+$catalog-filters-control-border-color: $light-grey;
+$catalog-filters-control-border-width: 2px;
+$catalog-filters-control-radius: 0;
+$catalog-filters-control-bg: $white;
+$catalog-filters-control-font-size: $font-size-12;
+$catalog-filters-control-padding-y: 0.4rem;
+$catalog-filters-control-padding-x: 0.6rem;
+$catalog-filter-radio-size: 16px;
+
+// ===============================
+// State & accessibility tokens
+// ===============================
+$catalog-filter-radio-hover-bg: $black;
+$catalog-filter-radio-hover-border-color: $light-grey;
+$catalog-filter-radio-checked-bg: $black;
+$catalog-filter-radio-checked-border-color: $light-grey;
+
+// light blue focus ring, kept local to the catalog
+$focus-ring-color: rgb(0 102 255 / 20%);
+
+// use global breakpoint map (sm: 768px)
+$catalog-filters-breakpoint: map.get($breakpoints, sm);
+
+// ===============================
+// Filter actions buttons tokens
+// ===============================
+$catalog-filters-actions-gap: 0.75rem;
+$catalog-filters-btn-font-size: $font-size-15;
+$catalog-filters-btn-radius: 0;
+$catalog-filters-btn-padding-y: 1rem;
+$catalog-filters-btn-padding-x: 3.25rem;
+$catalog-filters-btn-secondary-bg: $pink;
+$catalog-filters-btn-secondary-text: $white;
+
+// ===============================
+// Paginator tokens
+// ===============================
+$catalog-paginator-controls-gap: 1rem;
+$catalog-paginator-controls-margin-top: 1.5rem;
+$catalog-paginator-arrow-padding-y: 0.8rem;
+$catalog-paginator-arrow-padding-x: 1.3rem;
+$catalog-paginator-arrow-border-width: 3px;
+$catalog-paginator-arrow-border-radius: 6px;
+$catalog-paginator-arrow-icon-width: 0.5rem;
+$catalog-paginator-arrow-icon-height: 0.25rem;
+$catalog-paginator-arrow-icon-padding-top: 5px;
+$catalog-paginator-page-min-width: 2.5rem;
+$catalog-paginator-page-height: 2.5rem;
+$catalog-paginator-page-padding-x: 0.5rem;
+$catalog-paginator-page-gap: 0.8rem;
+
+// ===============================
+// Search bar tokens
+// ===============================
+$catalog-search-input-height: 2.5rem;
+$catalog-search-input-border-width: 3px;
+$catalog-search-input-padding-right: 2.5rem;
+$catalog-search-input-padding-left: 0.75rem;
+$catalog-search-button-size: 2rem;
+$catalog-search-button-right: 0.25rem;
+$catalog-search-icon-size: 1rem;
+
+// ===============================
+// Component styles
+// ===============================
+.catalog-main-container {
+    display: grid;
+    grid-template-columns: $catalog-layout-grid-columns;
+
+    .products-main-left-container {
+        max-width: $catalog-layout-left-max-width;
+
+        // ===============================
+        // Filter panel
+        // ===============================
+        .filters-panel {
+            background-color: $catalog-filters-bg;
+            padding: $catalog-filters-panel-padding-y $catalog-filters-panel-padding-x;
+
+
+
+            .filters-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: $catalog-filters-gap-block $catalog-filters-gap-inline;
+                padding: $catalog-filters-row-padding-y 0;
+                margin-bottom: $catalog-filters-row-margin-bottom;
+                border-top: $catalog-filters-border-width solid $catalog-filters-border-color;
+                border-bottom: $catalog-filters-border-width solid $catalog-filters-border-color;
+            }
+
+            &.is-collapsed {
+                .filters-row {
+                    display: none;
+                }
+            }
+
+            .filter-group {
+                display: flex;
+                flex-direction: column;
+                min-width: $catalog-filter-group-min-width;
+
+                .filter-group-label {
+                    padding-bottom: $catalog-filters-label-padding-bottom;
+                }
+
+                span {
+                    font-family: $font-montserrat;
+                    font-size: $catalog-filters-label-font-size;
+                    font-weight: $font-weight-bold;
+                    color: $catalog-filters-label-color;
+                }
+
+                select,
+                input[type='text'],
+                input[type='number'] {
+                    padding: $catalog-filters-control-padding-y $catalog-filters-control-padding-x;
+                    border: $catalog-filters-control-border-width solid $catalog-filters-control-border-color;
+                    border-radius: $catalog-filters-control-radius;
+                    background-color: $catalog-filters-control-bg;
+                    font-family: $font-montserrat;
+                    font-size: $catalog-filters-control-font-size;
+                    line-height: 1.3;
+                    cursor: pointer;
+                    appearance: none;
+                    outline: none;
+
+                    &:focus-visible {
+                        outline: none;
+                        box-shadow: 0 0 0 2px $focus-ring-color;
+                    }
+                }
+
+                .filter-radio-group {
+                    display: flex;
+                    align-items: center;
+
+                    .radio-option {
+                        display: inline-flex;
+                        align-items: center;
+                        justify-content: center;
+                        padding-top: $catalog-filters-control-padding-y;
+                        margin: 0;
+                        cursor: pointer;
+                        position: relative;
+                    }
+
+                    // Hide the native radio, but keep it accessible
+                    input[type='radio'] {
+                        position: absolute;
+                        opacity: 0;
+                        pointer-events: none;
+                    }
+
+                    .radio-circle {
+                        width: $catalog-filter-radio-size;
+                        height: $catalog-filter-radio-size;
+                        border-radius: 50%;
+                        border: 4px solid $catalog-filters-control-border-color;
+                        background-color: $catalog-filters-control-bg;
+                    }
+
+                    &:hover .radio-circle {
+                        border: 4px solid $catalog-filters-border-color;
+                    }
+
+                    // HOVER
+                    .radio-option:hover .radio-circle {
+                        background-color: $catalog-filter-radio-hover-bg;
+                        border-color: $catalog-filters-border-color;
+                    }
+
+                    // CHECKED
+                    input[type='radio']:checked+.radio-circle {
+                        background-color: $catalog-filter-radio-checked-bg;
+                        border-color: $catalog-filter-radio-checked-border-color;
+                    }
+
+                    // FOCUS (keyboard)
+                    input[type='radio']:focus-visible+.radio-circle {
+                        outline: none;
+                        box-shadow: 0 0 0 2px $focus-ring-color;
+                    }
+                }
+            }
+
+            .filters-actions {
+                display: flex;
+                gap: $catalog-filters-actions-gap;
+                margin-top: $catalog-filters-gap-block;
+
+
+            }
+
+
+            @media (max-width: $catalog-filters-breakpoint) {
+                .filters-row {
+                    flex-direction: column;
+                    align-items: stretch;
+                }
+
+                .filter-group {
+                    width: 100%;
+                }
+
+                .filters-actions {
+                    flex-wrap: wrap;
+                    justify-content: flex-start;
+                }
+            }
+        }
+
+        .products-carousel {
+            padding-top: 2rem;
+        }
+
+        .new-catalog-products-container {
+            flex-wrap: wrap;
+
+            .product-cell {
+                box-sizing: border-box;
+                padding-bottom: 3.125rem;
+            }
+        }
+
+        .top-details-navigation {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 2rem;
+        }
+
+        .paginator-controls {
+            display: flex;
+            align-items: center;
+            gap: $catalog-paginator-controls-gap;
+            margin-top: $catalog-paginator-controls-margin-top;
+        }
+
+        .paginator-arrow {
+            display: inline-flex;
+            align-items: center;
+            padding: $catalog-paginator-arrow-padding-y $catalog-paginator-arrow-padding-x;
+            border: $catalog-paginator-arrow-border-width solid $pink;
+            border-radius: $catalog-paginator-arrow-border-radius;
+            background-color: $white;
+            color: $black;
+            font-family: $font-montserrat;
+            font-size: $font-size-12;
+            font-weight: $font-weight-bold;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: $transition;
+
+            &:disabled {
+                visibility: hidden;
+                cursor: default;
+            }
+
+            &:not(:disabled):hover {
+                background-color: $pink;
+                border-color: $pink;
+                color: $white;
+            }
+        }
+
+        .paginator-pages {
+            display: flex;
+            justify-content: center;
+            flex: 1;
+            gap: $catalog-paginator-page-gap;
+        }
+
+        .paginator-page {
+            min-width: $catalog-paginator-page-min-width;
+            height: $catalog-paginator-page-height;
+            padding: 0 $catalog-paginator-page-padding-x;
+            border: 0;
+            border-radius: 0;
+            background-color: $white;
+            color: $grey-text-bg;
+            font-family: $font-montserrat;
+            font-size: $font-size-12;
+            font-weight: $font-weight-bold;
+            cursor: pointer;
+
+            &:hover {
+                border: 1px solid $pink;
+                border-radius: 4px;
+                color: $pink;
+            }
+        }
+
+        .paginator-page-active {
+            border-color: $pink;
+            border-radius: 4px;
+            background-color: $pink;
+            color: $white;
+            cursor: default;
+
+            &:hover {
+                border-color: $pink;
+                background-color: $pink;
+                color: $white;
+            }
+        }
+
+        .paginator-arrow-next {
+            margin-left: auto;
+        }
+
+        .paginator-arrow-prev::before,
+        .paginator-arrow-next::after {
+            content: '';
+            display: inline-block;
+            width: $catalog-paginator-arrow-icon-width;
+            height: $catalog-paginator-arrow-icon-height;
+            padding-top: $catalog-paginator-arrow-icon-padding-top;
+            background: url('/src/assets/img/arrow-catalog.svg') no-repeat center;
+        }
+
+        .paginator-arrow-prev::before {
+            margin-right: 0.5rem;
+            transform: rotate(180deg);
+        }
+
+        .paginator-arrow-next::after {
+            margin-left: 0.5rem;
+        }
+    }
+
+    .top-best-sets-right-container {
+        padding-left: $catalog-layout-right-gutter;
+
+        .search-bar {
+            position: relative;
+            width: 100%;
+
+            &-input {
+                width: 100%;
+                height: $catalog-search-input-height;
+                padding: 0 $catalog-search-input-padding-right 0 $catalog-search-input-padding-left;
+                border: $catalog-search-input-border-width solid $light-grey;
+                border-radius: 0;
+                font-family: $font-montserrat;
+                font-size: $font-size-17;
+                color: $grey-text-bg;
+
+                &::placeholder {
+                    color: color.adjust($grey-text-bg, $lightness: 20%);
+                }
+
+                &:focus-visible {
+                    outline: none;
+                    border-color: $pink;
+                    box-shadow: 0 0 0 2px $focus-ring-color;
+                }
+            }
+
+            &-button {
+                position: absolute;
+                top: 50%;
+                right: $catalog-search-button-right;
+                transform: translateY(-50%);
+                width: $catalog-search-button-size;
+                height: $catalog-search-button-size;
+                border: none;
+                cursor: pointer;
+                background: url('/src/assets/img/search-icon.svg') no-repeat center;
+                background-size: $catalog-search-icon-size $catalog-search-icon-size;
+                background-color: transparent;
+
+                &:focus-visible {
+                    outline: none;
+                }
+            }
+        }
+
+        .best-sets-products-container {
+            padding-top: 1.2rem;
+
+            h4 {
+                font-family: $font-montserrat;
+                line-height: 0;
+            }
+
+            .best-sets-products {
+                padding-top: 0.6rem;
+            }
+        }
+    }
+}

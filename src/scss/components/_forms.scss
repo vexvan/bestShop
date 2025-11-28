@@ -1,0 +1,105 @@
+@use "../abstracts/index" as *;
+
+// ===============================
+// Sorting dropdown tokens
+// ===============================
+$sorting-dropdown-width: 12.625rem;
+$sorting-dropdown-height: 2.5rem;
+$sorting-dropdown-padding-x: 0.75rem;
+$sorting-dropdown-border-width: 3px;
+$sorting-dropdown-menu-border-width: 2px;
+$sorting-dropdown-gap: 0.5rem;
+$sorting-dropdown-icon-size: 0.75rem;
+$sorting-dropdown-menu-max-height: 14rem;
+$sorting-dropdown-transition: 0.15s ease;
+
+// ===============================
+// Sorting dropdown component
+// ===============================
+.sorting-dropdown {
+  position: relative;
+  display: inline-block;
+  font-family: $font-montserrat;
+  font-size: $font-size-17;
+
+  &-button {
+    min-width: $sorting-dropdown-width;
+    height: $sorting-dropdown-height;
+    padding: 0 $sorting-dropdown-padding-x;
+    border: $sorting-dropdown-border-width solid $light-grey;
+    border-radius: 0;
+    background-color: $white;
+    color: $grey-text-bg;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: $sorting-dropdown-gap;
+    transition:
+      border-color $sorting-dropdown-transition,
+      background-color $sorting-dropdown-transition,
+      color $sorting-dropdown-transition;
+
+    &:hover,
+    &:focus-visible {
+      border-color: $pink;
+      outline: none;
+    }
+  }
+
+  &-icon {
+    width: $sorting-dropdown-icon-size;
+    height: $sorting-dropdown-icon-size;
+    flex-shrink: 0;
+    transition: transform $sorting-dropdown-transition;
+  }
+
+  &-menu {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    min-width: $sorting-dropdown-width;
+    width: max-content;
+    margin: 0;
+    padding: 0.25rem 0;
+    list-style: none;
+    background-color: $white;
+    border: $sorting-dropdown-menu-border-width solid $light-grey;
+    border-radius: 0;
+    box-shadow: $box-shadow;
+    max-height: $sorting-dropdown-menu-max-height;
+    overflow-y: auto;
+    z-index: 10;
+    display: none;
+  }
+
+  &-menu li {
+    padding: 0.5rem $sorting-dropdown-padding-x;
+    cursor: pointer;
+    color: $grey-text-bg;
+    white-space: nowrap;
+    transition:
+      background-color 0.1s ease,
+      color 0.1s ease;
+  }
+
+  &-menu li:hover,
+  &-menu li:focus-visible {
+    background-color: $pink;
+    color: $white;
+    outline: none;
+  }
+
+  // Open state
+  &.is-open {
+    .sorting-dropdown-menu {
+      display: block;
+    }
+
+    .sorting-dropdown-icon {
+      transform: rotate(180deg);
+    }
+  }
+}

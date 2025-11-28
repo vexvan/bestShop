@@ -1,0 +1,72 @@
+
+@use "../abstracts/index"as *;
+
+#site-footer {
+    p {
+        font-family: $font-funnel;
+    }
+
+    .layout-container {
+        padding-top: 0;
+    }
+}
+
+.site-footer-top {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 2fr;
+    padding-top: 6rem;
+    padding-bottom: 1rem;
+    font-family: $font-funnel;
+    font-size: $font-size-15;
+
+    ul {
+        list-style-type: none;
+        justify-content: center;
+        margin: 0;
+        padding: 0;
+
+        li a {
+            text-decoration: none;
+        }
+
+        li {
+            padding-bottom: 0.65rem;
+        }
+    }
+}
+
+.site-footer-bottom {
+    display: grid;
+    grid-template-columns: 3fr 1fr 2fr;
+    grid-template-rows: auto auto;
+    padding-bottom: 6rem;
+    font-family: $font-funnel;
+    font-size: $font-size-15;
+
+    .info-layout-container {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 1rem;
+
+        .site-footer-contact-details {
+            display: flex;
+            justify-content: left;
+            align-items: center;
+            gap: 0.7rem;
+        }
+    }
+
+    .copyright {
+        grid-column: 1 / -1;
+        justify-self: center;
+        margin-top: 3rem;
+        text-align: center;
+        color: rgba($black, 0.35);
+    }
+}
+
+
+.line-height-custom {
+    line-height: $line-height;
+}

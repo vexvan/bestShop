@@ -1,0 +1,234 @@
+@use "../abstracts/index"as *;
+
+// ===============================
+// Tokens
+// ===============================
+$cart-page-padding-y: 3rem;
+$cart-row-padding-y: 3rem;
+$cart-row-padding-x: 1.8rem;
+$cart-row-gap-x: 1rem;
+$cart-row-border-width: 2px;
+$cart-header-padding-y: 1rem;
+$cart-image-width: 7.5rem;
+$cart-footer-gap: 2rem;
+$cart-summary-padding: 2rem;
+$cart-summary-border-color: $pink;
+$cart-summary-bg: $grey-text-bg;
+$cart-font-family: $font-montserrat;
+
+
+// ===============================
+// Page wrapper
+// ===============================
+.cart-page {
+    padding: $cart-page-padding-y 0;
+    font-family: $cart-font-family;
+}
+
+// Small hero variant
+.hero-section.sm {
+    min-height: 229px;
+}
+
+// ===============================
+// Empty state / messages
+// ===============================
+.cart-empty {
+    font-size: $font-size-15;
+    color: $grey-text-bg;
+}
+
+// (optional) if you use .cart-message somewhere:
+.cart-message {
+    margin-top: 0.5rem;
+    font-size: $font-size-15;
+    color: $pink;
+}
+
+// ===============================
+// Table
+// ===============================
+.cart-table {
+    width: 100%;
+    border-radius: 0;
+    overflow: hidden;
+    background-color: $white;
+}
+
+// Single row (header + items)
+.cart-row {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr 2fr 1fr 1fr;
+    align-items: center;
+    column-gap: $cart-row-gap-x;
+    padding: $cart-row-padding-y $cart-row-padding-x;
+    border-bottom: $cart-row-border-width solid $pink;
+
+    &-header {
+        padding: $cart-header-padding-y $cart-row-padding-x;
+        background-color: $grey-text-bg;
+        color: $white;
+        font-size: $font-size-12;
+        font-weight: $font-weight-bold;
+        text-transform: uppercase;
+        border-bottom: 0;
+    }
+
+    .cart-cell {
+        font-weight: $font-weight-bold;
+    }
+
+    // Tablet and down – more compact rows
+    @include respond(md) {
+        padding: 2rem 1.25rem;
+        grid-template-columns: 1.5fr 2fr 1fr 1fr;
+        grid-auto-rows: auto;
+
+        .cart-cell-total,
+        .cart-cell-delete {
+            grid-column: span 2;
+            margin-top: 0.25rem;
+        }
+
+        .cart-cell-delete {
+            text-align: right;
+        }
+    }
+
+    // Phones – stack more, shrink padding
+    @include respond(sm) {
+        padding: 1.5rem 1rem;
+        row-gap: 0.75rem;
+        grid-template-columns: 1fr 1fr;
+
+        .cart-cell-image {
+            grid-column: 1 / -1;
+            justify-self: center;
+        }
+
+        .cart-cell-name {
+            grid-column: 1 / -1;
+            text-align: center;
+        }
+
+        .cart-cell-price,
+        .cart-cell-qty,
+        .cart-cell-total {
+            text-align: left;
+        }
+
+        .cart-cell-delete {
+            text-align: right;
+        }
+    }
+}
+
+// ===============================
+// Cells
+// ===============================
+.cart-cell-image img {
+    display: block;
+    width: $cart-image-width;
+    height: auto;
+    background-color: $light-grey;
+}
+
+.cart-cell-price,
+.cart-cell-qty {
+    text-align: center;
+}
+
+.cart-cell-delete {
+    text-align: right;
+}
+
+// ===============================
+// Delete button
+// ===============================
+.cart-delete-btn {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: $grey;
+    padding: 0;
+
+    &:hover {
+        color: $pink;
+    }
+}
+
+// Quantity cell layout (if not already)
+.cart-cell-qty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+// Reset default button styles for +/- buttons
+.cart-qty-btn {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  line-height: 1;
+  cursor: pointer;
+  appearance: none;
+
+  &:focus-visible {
+    outline: 2px solid $pink;
+    outline-offset: 2px;
+  }
+}
+
+
+// ===============================
+// Footer
+// ===============================
+.cart-footer {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: $cart-footer-gap;
+    margin-top: 2rem;
+    align-items: flex-start;
+
+    @include respond(sm) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.cart-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+// Summary box
+.cart-summary {
+    padding: $cart-summary-padding;
+    border: 0;
+    background-color: $cart-summary-bg;
+    font-family: $cart-font-family;
+    font-size: $font-size-17;
+    font-weight: $font-weight-bold;
+    color: $white;
+}
+
+.cart-summary-row {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid $cart-summary-border-color;
+}
+
+.cart-summary-total {
+    font-weight: $font-weight-bold;
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+    border-bottom: 0;
+}

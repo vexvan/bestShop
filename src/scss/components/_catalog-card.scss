@@ -1,0 +1,422 @@
+@use "../abstracts/index"as *;
+
+// ===============================
+// Catalog / cards tokens
+// ===============================
+
+// Products / carousel
+$products-container-gap: 2rem;
+$catalog-carousel-padding-top: 4rem;
+$catalog-carousel-arrow-size: 2rem;
+$catalog-carousel-arrow-border-width: 2px;
+$catalog-carousel-arrow-icon-size: 1rem;
+$catalog-carousel-arrow-gap: 0.5rem;
+$catalog-carousel-arrow-top: 0.75rem;
+
+// Catalog card
+$catalog-card-width: 18.5rem;
+$catalog-card-height: 35.5625rem;
+$catalog-card-media-height: 25rem;
+$catalog-card-badge-width: 3.375rem;
+$catalog-card-badge-height: 1.75rem;
+$catalog-card-badge-offset-x: 1rem;
+$catalog-card-badge-offset-y: 1rem;
+$catalog-card-body-height: 10.5625rem;
+$catalog-card-title-padding-inline: 2rem;
+$catalog-card-cta-width: 9.75rem;
+$catalog-card-cta-height: 2.5rem;
+
+// Travel card
+$travel-card-width: 18.5rem;
+$travel-card-height: 37.5rem;
+$travel-card-body-width: 12.5rem;
+$travel-card-hover-scale: 1.08;
+$travel-card-hover-duration: 0.3s;
+
+// Customer card (class name stays "costumer" for compatibility)
+$customer-card-width: 26.25rem;
+$customer-card-height: 21rem;
+$customer-card-gap: 1.5rem;
+$customer-card-media-size: 6.125rem;
+$customer-card-body-width: 21.125rem;
+
+// Top best sets card
+$topbestsets-card-width: 19.9375rem;
+$topbestsets-card-height: 5.4375rem;
+$topbestsets-card-gap: 1rem;
+$topbestsets-card-padding-bottom: 1.5625rem;
+$topbestsets-card-media-size: 5.4375rem;
+
+// ===============================
+// Products / carousel
+// ===============================
+.products-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+
+  @include respond(sm) {
+    gap: 1.5rem;
+  }
+}
+
+.products-container {
+  justify-content: space-between;
+  gap: $products-container-gap;
+}
+
+.products-carousel {
+  position: relative;
+  width: 100%;
+  padding-top: $catalog-carousel-padding-top;
+}
+
+.product-cell {
+  display: flex;
+  justify-content: center;
+}
+
+.carousel-controls.tr {
+  position: absolute;
+  top: $catalog-carousel-arrow-top;
+  right: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: $catalog-carousel-arrow-gap;
+  z-index: 3;
+
+  .carousel-arrow {
+    width: $catalog-carousel-arrow-size;
+    height: $catalog-carousel-arrow-size;
+    padding: 0;
+    border: $catalog-carousel-arrow-border-width solid $pink;
+    background-color: transparent;
+    background-image: url("/src/assets/img/arrow-catalog.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: $catalog-carousel-arrow-icon-size $catalog-carousel-arrow-icon-size;
+    cursor: pointer;
+    transition: $transition;
+
+    &:disabled {
+      cursor: not-allowed;
+      border-color: $light-grey;
+      background-color: transparent;
+      background-image: url("/src/assets/img/arrow-catalog-disabled.svg");
+    }
+
+    &:not(:disabled):hover {
+      background-color: $pink;
+      border-color: $pink;
+      background-image: url("/src/assets/img/arrow-catalog-white.svg");
+    }
+  }
+
+  #prev-btn-products,
+  #prev-btn-new-products {
+    transform: rotate(180deg);
+  }
+}
+
+// ===============================
+// Catalog card
+// ===============================
+.catalog-card-container {
+  width: $catalog-card-width;
+  height: $catalog-card-height;
+
+  .catalog-card-link,
+  .catalog-card-link-image,
+  .catalog-card-cta {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .catalog-card-media {
+    position: relative;
+    width: $catalog-card-width;
+    height: $catalog-card-media-height;
+    display: flex;
+    background-color: $light-grey;
+
+    .catalog-card-image {
+      width: 100%;
+      height: auto;
+      display: block;
+      box-shadow: $box-shadow;
+    }
+
+    .catalog-card-badge {
+      position: absolute;
+      top: $catalog-card-badge-offset-y;
+      left: $catalog-card-badge-offset-x;
+      width: $catalog-card-badge-width;
+      height: $catalog-card-badge-height;
+      display: inline-grid;
+      place-items: center;
+      background-color: $pink;
+
+      .catalog-card-badge-text {
+        font-family: $font-montserrat;
+        font-size: $font-size-12;
+        font-weight: $font-weight-bold;
+        text-transform: uppercase;
+        color: $white;
+      }
+    }
+  }
+
+  .catalog-card-body {
+    width: $catalog-card-width;
+    height: $catalog-card-body-height;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    text-align: center;
+
+    .catalog-card-body-container {
+      .catalog-card-title {
+        margin: 0;
+        padding: 0 $catalog-card-title-padding-inline;
+        font-family: $font-montserrat;
+        font-size: $font-size-19;
+        font-weight: $font-weight-bold;
+        line-height: $line-height2;
+        color: $black;
+      }
+
+      .catalog-card-price {
+        margin: 1rem 0;
+        font-family: $font-montserrat;
+        font-size: $font-size-19;
+        font-weight: $font-weight-bold;
+        color: $grey-text-bg;
+      }
+
+      .catalog-card-cta {
+        width: $catalog-card-cta-width;
+        height: $catalog-card-cta-height;
+        display: inline-grid;
+        place-items: center;
+        padding: 0;
+        margin: 0;
+        border: none;
+        cursor: pointer;
+        background-color: $pink;
+
+        .catalog-card-cta-text {
+          font-family: $font-montserrat;
+          font-size: $font-size-17;
+          font-weight: $font-weight-bold;
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+// ===============================
+// Travel card
+// ===============================
+.travel-card-container {
+  position: relative;
+  width: 100%;
+  max-width: $travel-card-width;
+  overflow: hidden;
+  transition: box-shadow $travel-card-hover-duration ease;
+
+  &:hover {
+    box-shadow: $box-shadow;
+  }
+
+  .travel-card-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform $travel-card-hover-duration ease;
+  }
+
+  &:hover .travel-card-image {
+    transform: scale($travel-card-hover-scale);
+  }
+
+  .travel-card-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: $overlay;
+    z-index: 1;
+
+    .travel-card-body {
+      width: $travel-card-body-width;
+      padding-bottom: 2rem;
+      text-align: left;
+      color: $white;
+
+      .travel-card-title {
+        font-family: $font-montserrat;
+        font-size: $font-size-19;
+        font-weight: $font-weight-bold;
+        line-height: $line-height2;
+      }
+
+      .travel-card-description {
+        font-family: $font-montserrat;
+        font-size: $font-size-19;
+        font-weight: $font-weight-regular;
+        line-height: $line-height2;
+      }
+    }
+  }
+
+  @include respond(md) {
+    max-width: 100%;
+  }
+
+  @include respond(sm) {
+    max-width: 100%;
+
+    .travel-card-overlay .travel-card-body {
+      width: 100%;
+      padding-inline: 1rem;
+    }
+
+    .travel-card-overlay .travel-card-title,
+    .travel-card-overlay .travel-card-description {
+      font-size: $font-size-17;
+    }
+  }
+}
+
+.travel-cards-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+
+  @include respond(lg) {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  @include respond(md) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include respond(sm) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+// ===============================
+// Customer card (class: costumer-*)
+// ===============================
+.costumer-card-container {
+  width: $customer-card-width;
+  height: $customer-card-height;
+  margin-inline: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: $customer-card-gap;
+  box-shadow: $box-shadow;
+
+  .costumer-card-media {
+    width: $customer-card-media-size;
+    height: $customer-card-media-size;
+    border-radius: 50%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      border-radius: inherit;
+    }
+  }
+
+  .costumer-card-body {
+    width: $customer-card-body-width;
+    text-align: center;
+
+    .costummer-card-description {
+      margin: 0;
+      font-family: $font-montserrat;
+      font-size: $font-size-17;
+      font-weight: $font-weight-regular;
+      line-height: $line-height2;
+      color: $black;
+    }
+
+    .costummer-card-title {
+      margin-top: 1.5rem;
+      margin-bottom: 0;
+      font-family: $font-montserrat;
+      font-size: $font-size-17;
+      font-weight: $font-weight-bold;
+      line-height: $line-height2;
+      color: $pink;
+    }
+  }
+}
+
+// ===============================
+// Top best sets card
+// ===============================
+.topbestsets-card-container {
+  width: $topbestsets-card-width;
+  height: $topbestsets-card-height;
+  display: flex;
+  flex-direction: row;
+  gap: $topbestsets-card-gap;
+  padding-bottom: $topbestsets-card-padding-bottom;
+
+  .topbestsets-card-media {
+    flex: 0 0 $topbestsets-card-media-size;
+    height: 100%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      background-color: $light-grey;
+      box-shadow: $box-shadow;
+    }
+  }
+
+  .topbestsets-card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+
+    .topbestsets-card-description {
+      margin: 0;
+      font-family: $font-montserrat;
+      font-weight: $font-weight-regular;
+      font-size: $font-size-15;
+      line-height: $line-height2;
+    }
+
+    .topbestsets-card-star-container {
+      display: flex;
+      flex-direction: row;
+      gap: 0.375rem;
+      padding-top: 0.2rem;
+      padding-bottom: 0.2rem;
+    }
+
+    .topbestsets-card-price {
+      margin: 0;
+      font-family: $font-montserrat;
+      font-weight: $font-weight-regular;
+      font-size: $font-size-15;
+    }
+  }
+}

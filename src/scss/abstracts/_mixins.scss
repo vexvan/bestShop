@@ -1,0 +1,15 @@
+@use 'sass:map';
+@use 'variables' as *;
+
+// breakpoint helper
+@mixin respond($bp) {
+  $value: map.get($breakpoints, $bp);
+
+  @if $value {
+    @media (max-width: $value) {
+      @content;
+    }
+  } @else {
+    @warn "Unknown breakpoint `#{$bp}`. Available: #{map-keys($breakpoints)}";
+  }
+}

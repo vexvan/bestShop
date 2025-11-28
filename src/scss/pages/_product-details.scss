@@ -1,0 +1,330 @@
+@use "../abstracts/index" as *;
+
+// ===============================
+// Tokens
+// ===============================
+$product-content-padding-top: 6rem;
+$product-tabs-gap: 10rem;
+$product-review-layout-gap: 12rem;
+$product-review-inner-gap: 2rem;
+$product-review-avatar-size: 2.875rem;
+$product-review-border-color: $pink;
+$product-review-placeholder-font-size: 0.8125rem;
+
+// ===============================
+// Tabs / header
+// ===============================
+.product-content-section {
+  padding-top: $product-content-padding-top;
+}
+
+.product-content-header {
+  ul {
+    display: flex;
+    justify-content: center;
+    gap: $product-tabs-gap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  li {
+    text-transform: uppercase;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-17;
+    font-family: $font-montserrat;
+  }
+
+  a {
+    position: relative;
+    padding-bottom: 0.25rem;
+    text-decoration: none;
+    color: $black;
+
+    &:hover {
+      color: $pink;
+    }
+
+    &.active {
+      color: $black;
+      border-bottom: 2px solid $pink;
+    }
+  }
+}
+
+// ===============================
+// Main layout (left reviews + right form)
+// ===============================
+.contatnt-main-body-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: $product-review-layout-gap;
+  margin-top: 2.5rem;
+
+  @include respond(md) {
+    grid-template-columns: 1fr;
+    gap: 4rem;
+  }
+
+  .contant-tittle {
+    font-weight: $font-weight-bold;
+    color: $black;
+    font-family: $font-montserrat;
+    font-size: $font-size-17;
+  }
+
+  .reviwe-stars {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0.25rem;
+  }
+}
+
+// ===============================
+// Left side: existing reviews
+// ===============================
+.contant-left-side {
+  .reviews-container {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: $product-review-inner-gap;
+    align-items: flex-start;
+
+    @include respond(sm) {
+      grid-template-columns: 1fr;
+    }
+
+    .madia-left-side {
+      .media-placeholder {
+        width: $product-review-avatar-size;
+        height: $product-review-avatar-size;
+        aspect-ratio: 1 / 1;
+        border-radius: 50%;
+        background-color: $light-grey;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+          border-radius: inherit;
+        }
+      }
+    }
+
+    .contant-body-right-side {
+      .contant-body-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        align-items: center;
+
+        @include respond(sm) {
+          grid-template-columns: 1fr;
+          row-gap: 0.5rem;
+        }
+
+        .review-text-container {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: flex-start;
+          gap: 1rem;
+
+          .reviwe-name {
+            color: $black;
+            font-weight: $font-weight-bold;
+          }
+
+          .reviwe-date {
+            font-size: $product-review-placeholder-font-size;
+          }
+        }
+
+        .review-text {
+          color: $black;
+        }
+      }
+    }
+  }
+}
+
+// ===============================
+// Right side: add review form
+// ===============================
+.contant-right-side {
+  .rate-product-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+    padding-bottom: 1rem;
+
+    p {
+      text-transform: uppercase;
+      font-size: $product-review-placeholder-font-size;
+      font-weight: $font-weight-bold;
+    }
+  }
+
+  .form-field-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .review-form-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    width: 100%;
+
+    @include respond(sm) {
+      flex-direction: column;
+    }
+  }
+
+  .review-form-item {
+    flex: 1;
+  }
+
+  // ---- Shared wrapper base (input + textarea) ----
+  .input-wrapper,
+  .textarea-wrapper {
+    position: relative;
+    box-sizing: border-box;
+    border: 3px solid $product-review-border-color;
+    background: transparent;
+  }
+
+  /* ---- INPUTS (Name / Email) ---- */
+  .input-wrapper input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0.5rem 0.75rem;
+    box-sizing: border-box;
+    font: inherit;
+    background: transparent;
+    text-align: left;
+  }
+
+  .fake-placeholder {
+    position: absolute;
+    left: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: $product-review-placeholder-font-size;
+    font-family: $font-montserrat;
+    color: $grey-text-bg;
+    pointer-events: none;
+
+    .star {
+      color: $pink;
+    }
+  }
+
+  .input-wrapper input:focus + .fake-placeholder,
+  .input-wrapper input:not(:placeholder-shown) + .fake-placeholder {
+    opacity: 0;
+  }
+
+  // TEXTAREA (Your Review)
+  .textarea-wrapper textarea {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    font: inherit;
+    resize: vertical;
+    background: transparent;
+  }
+
+  .fake-placeholder-textarea {
+    position: absolute;
+    left: 0.75rem;
+    top: 0.5rem;
+    font-size: $product-review-placeholder-font-size;
+    font-family: $font-montserrat;
+    color: $grey-text-bg;
+    pointer-events: none;
+
+    .star {
+      color: $pink;
+    }
+  }
+
+  .textarea-wrapper textarea:focus + .fake-placeholder-textarea,
+  .textarea-wrapper textarea:not(:placeholder-shown) + .fake-placeholder-textarea {
+    opacity: 0;
+  }
+
+  /* ---- Checkbox row ---- */
+  .review-label {
+    font-size: $product-review-placeholder-font-size;
+    color: $grey-text-bg;
+    font-family: $font-montserrat;
+    text-align: left;
+  }
+
+  .required-star {
+    color: $pink;
+  }
+
+  .review-save-data {
+    margin: 2rem 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+
+    // hide native checkbox visually
+    input[type="checkbox"] {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    label {
+      position: relative;
+      padding-left: 1.5rem;
+      font-size: $font-size-12;
+      font-family: $font-montserrat;
+      color: $grey-text-bg;
+      cursor: pointer;
+    }
+
+    // custom box
+    label::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.1em;
+      width: 14px;
+      height: 14px;
+      border: 2px solid $grey-text-bg;
+      border-radius: 0;
+      box-sizing: border-box;
+      background-color: $white;
+    }
+
+    label:hover::before {
+      border-color: $pink;
+    }
+
+    // custom checkmark
+    input[type="checkbox"]:checked + label::after {
+      content: "";
+      position: absolute;
+      left: 4px;
+      top: 1px;
+      width: 5px;
+      height: 9px;
+      border-right: 2px solid $grey-text-bg;
+      border-bottom: 2px solid $grey-text-bg;
+      transform: rotate(45deg);
+    }
+  }
+}

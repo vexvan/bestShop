@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>My Cart</title>
+    <link rel="stylesheet" href="/src/dist/main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300..800&family=Montserrat:wght@100..900&display=swap");
+    </style>
+  </head>
+  <body data-page="cart">
+    <div id="site-header"></div>
+
+    <main>
+      <section class="hero-section sm" id="hero-section"></section>
+
+      <div class="layout-container cart-page">
+        <p class="cart-empty" id="data-cart-empty" hidden>
+          Your cart is empty.
+        </p>
+        <output
+          class="cart-message"
+          id="data-cart-message"
+          hidden
+        ></output>
+        <div class="cart-table" data-cart-table>
+          <div class="cart-row cart-row-header">
+            <div class="cart-cell cart-cell-image">Image</div>
+            <div class="cart-cell cart-cell-name">Product Name</div>
+            <div class="cart-cell cart-cell-price">Price</div>
+            <div class="cart-cell cart-cell-qty">Quantity</div>
+            <div class="cart-cell cart-cell-total">Total</div>
+            <div class="cart-cell cart-cell-delete">Delete</div>
+          </div>
+
+          <div class="cart-table-body" id="data-cart-table-body"></div>
+          <div class="cart-footer">
+            <div class="cart-actions">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="data-cart-continue"
+              >
+                Continue shopping
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-secondary"
+                id="data-cart-clear"
+              >
+                Clear shopping cart
+              </button>
+            </div>
+
+            <aside class="cart-summary">
+              <div class="cart-summary-row">
+                <span>Sub total</span>
+                <output id="data-cart-subtotal">$0</output>
+              </div>
+
+              <div class="cart-summary-row" id="data-cart-discount-row" hidden>
+                <span>Discount</span>
+                <output id="data-cart-discount">-$0</output>
+              </div>
+
+              <div class="cart-summary-row">
+                <span>Shipping</span>
+                <output id="data-cart-shipping">Free</output>
+              </div>
+
+              <div class="cart-summary-row cart-summary-total">
+                <span>Total</span>
+                <output id="data-cart-total">$0</output>
+              </div>
+
+              <button
+                type="button"
+                class="button-pink button-pink-40 cart-summary-checkout"
+                id="data-cart-checkout"
+              >
+                Checkout
+              </button>
+            </aside>
+          </div>
+        </div>
+      </div>
+      <section id="site-benefits"></section>
+    </main>
+
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>

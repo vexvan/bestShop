@@ -1,0 +1,71 @@
+$layout-max-width: 1300px;
+
+// Colors
+$black: #000;
+$white: #fff;
+$pink: #B92770;
+$grey-text-bg: #504E4A;
+$grey: #727174;
+$light-grey: #E9E9ED;
+$overlay: rgb($black, 0.4);
+
+// breakpoints: 768, 1024, 1440
+$breakpoints: (sm: 768px,
+  md: 1024px,
+  lg: 1440px
+);
+
+// Space
+$space-6: 6rem;
+
+// font families:
+$font-montserrat: "Montserrat";
+$font-funnel: "Funnel Sans";
+
+
+// font weights:
+$font-weight-regular: 400;
+$font-weight-medium: 500;
+$font-weight-bold: 700;
+$font-weight-black: 900;
+
+// font size:
+$font-size-50: 50px;
+$font-size-40: 40px;
+$font-size-30: 30px;
+$font-size-20: 20px;
+$font-size-19: 19px;
+$font-size-18: 18px;
+$font-size-17: 17px;
+$font-size-15: 15px;
+$font-size-12: 12px;
+$font-size-9: 9px;
+
+
+// font line-height:
+$line-height: 1.8;
+$line-height2: 1.5;
+$box-shadow: 0px 20px 80px 0px rgb(193 199 212 / 70.2%);
+
+// Transition
+$transition: background-color 0.15s ease,
+background-image 0.15s ease,
+border-color 0.15s ease;
+
+// Button tokens
+$btn-padding-y: 1rem;
+$btn-padding-x: 3.25rem;
+$btn-border-radius: 0;
+$btn-font-size: $font-size-15;
+$btn-transition:
+  background-color 0.15s ease,
+  border-color 0.15s ease,
+  color 0.15s ease,
+  transform 0.05s ease;
+
+// Secondary button
+$btn-secondary-bg: $pink;
+$btn-secondary-text: $white;
+$btn-secondary-font-family: $font-montserrat;
+$btn-secondary-font-size: $font-size-12;
+$btn-secondary-font-weight: $font-weight-medium;

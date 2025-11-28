@@ -1,0 +1,253 @@
+@use "../abstracts/index" as *;
+
+// ===============================
+// Tokens
+// ===============================
+
+// Global section spacing
+$section-padding-y: 1rem;
+$section-gap-large: 6rem;
+
+// Hero
+$hero-min-height-lg: 32.125rem;
+$hero-min-height-sm: 14.3125rem;
+$hero-max-content-width: 29rem;
+$hero-title-color: $white;
+$hero-subtitle-color: $light-grey;
+
+// Why section
+$why-grid-gap: 6rem;
+$why-icon-size: 3.875rem;
+$why-item-gap: 1rem;
+
+// Arrival section
+$arrival-gap-x: 2rem;
+$arrival-img-max-width: 38.4375rem;
+
+// Team section
+$team-grid-gap: 2rem;
+$team-card-max-width: 25.625rem;
+$team-member-gap: 1rem;
+
+// ===============================
+// Hero section
+// ===============================
+
+.hero-section {
+  position: relative;
+  width: 100%;
+  min-height: $hero-min-height-lg;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-color: $overlay;
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: $hero-max-content-width;
+    padding-inline: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    h1 {
+      margin: 0;
+      font-weight: $font-weight-bold;
+      color: $hero-title-color;
+    }
+
+    p {
+      margin-top: 0.75rem;
+      color: $hero-subtitle-color;
+    }
+  }
+
+  // Smaller hero variant (if you use .hero-section.sm)
+  &.sm {
+    min-height: $hero-min-height-sm;
+  }
+
+  @include respond(sm) {
+    min-height: $hero-min-height-sm;
+
+    .hero-content {
+      padding-inline: 1.5rem;
+
+      h1 {
+        font-size: $font-size-30;
+      }
+    }
+  }
+}
+
+// ===============================
+// Why choose section
+// ===============================
+
+.why-secton-main {
+  display: grid;
+  gap: $why-grid-gap;
+  padding: $section-padding-y 0;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include respond(lg) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include respond(md) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond(sm) {
+    grid-template-columns: 1fr;
+  }
+
+  .reason-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: $why-item-gap;
+
+    .img-placeholder {
+      width: $why-icon-size;
+      height: $why-icon-size;
+
+      img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        object-fit: cover;
+        border-radius: inherit;
+        background-color: $light-grey;
+      }
+    }
+
+    h4 {
+      margin: 0;
+      font-size: $font-size-20;
+    }
+  }
+}
+
+// ===============================
+// Arrival section
+// ===============================
+
+.arrival-main {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: $arrival-gap-x;
+  padding: $section-padding-y 0;
+
+  .left-side {
+    flex: 1 1 0;
+    padding-right: $arrival-gap-x;
+
+    h2 {
+      margin: 0;
+    }
+  }
+
+  .img-holder {
+    flex: 1 1 0;
+    width: 100%;
+    max-width: $arrival-img-max-width;
+    background-color: $light-grey;
+
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+  }
+
+  @include respond(md) {
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .left-side {
+      padding-right: 0;
+    }
+
+    .img-holder {
+      max-width: 100%;
+    }
+  }
+}
+
+// ===============================
+// Team section
+// ===============================
+
+.team-members {
+  display: grid;
+  gap: $team-grid-gap;
+  padding: $section-padding-y 0;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+
+  @include respond(lg) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @include respond(sm) {
+    grid-template-columns: 1fr;
+  }
+
+  .member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: $team-member-gap;
+
+    .img-holder {
+      width: 100%;
+      max-width: $team-card-max-width;
+      background-color: $light-grey;
+
+      img {
+        width: 100%;
+        height: auto;
+        display: block;
+        object-fit: cover;
+      }
+    }
+
+    .member-title {
+      margin: 0;
+      font-family: $font-montserrat;
+      font-size: $font-size-20;
+      font-weight: $font-weight-bold;
+      text-transform: uppercase;
+      color: $black;
+    }
+  }
+}

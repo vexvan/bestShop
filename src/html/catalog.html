@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Home</title>
+    <link rel="stylesheet" href="/src/dist/main.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Funnel+Sans:wght@300..800&family=Montserrat:wght@100..900&display=swap");
+    </style>
+  </head>
+  <body data-page="catalog">
+    <div id="site-header"></div>
+
+    <main>
+      <div class="layout-container padding-bottom-6">
+        <div class="catalog-main-container">
+          <div class="products-main-left-container">
+            <div class="top-details-navigation">
+              <p class="main-description">Showing x-y of z Results</p>
+
+              <div
+                class="sorting-dropdown sorting-dropdown--sort"
+                data-sort-dropdown
+              >
+                <button
+                  class="sorting-dropdown-button"
+                  id="base-sorting"
+                  type="button"
+                >
+                  <span class="sorting-dropdown-label">Default sorting</span>
+                  <img
+                    src="/src/assets/img/arrow-dropdown.svg"
+                    alt=""
+                    class="sorting-dropdown-icon"
+                  />
+                </button>
+                <ul class="sorting-dropdown-menu">
+                  <li data-value="default">Default sorting</li>
+                  <li data-value="price_asc">Price: Low to High</li>
+                  <li data-value="price_desc">Price: High to Low</li>
+                  <li data-value="popularity_desc">
+                    Popularity: Most Popular First
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="filters-panel">
+              <div class="filters-row">
+                <div class="filter-group">
+                  <span id="filter-size-label" class="filter-group-label"
+                    >Size</span
+                  >
+
+                  <div
+                    class="sorting-dropdown filter-dropdown"
+                    data-filter-id="filter-size"
+                    aria-labelledby="filter-size-label"
+                  >
+                    <button
+                      class="sorting-dropdown-button"
+                      id="size"
+                      type="button"
+                    >
+                      <span class="sorting-dropdown-label">Choose option</span>
+                      <img
+                        src="/src/assets/img/arrow-dropdown.svg"
+                        alt=""
+                        class="sorting-dropdown-icon"
+                      />
+                    </button>
+                    <ul class="sorting-dropdown-menu">
+                      <li data-value="all">Choose option</li>
+                      <li data-value="S">S</li>
+                      <li data-value="M">M</li>
+                      <li data-value="L">L</li>
+                      <li data-value="XL">XL</li>
+                    </ul>
+                  </div>
+
+                  <input type="hidden" id="filter-size" value="all" />
+                </div>
+
+                <div class="filter-group">
+                  <span id="filter-color-label" class="filter-group-label"
+                    >Color</span
+                  >
+
+                  <div
+                    class="sorting-dropdown filter-dropdown"
+                    data-filter-id="filter-color"
+                    aria-labelledby="filter-color-label"
+                  >
+                    <button class="sorting-dropdown-button" type="button">
+                      <span class="sorting-dropdown-label">Choose option</span>
+                      <img
+                        src="/src/assets/img/arrow-dropdown.svg"
+                        alt=""
+                        class="sorting-dropdown-icon"
+                      />
+                    </button>
+                    <ul class="sorting-dropdown-menu">
+                      <li data-value="all">Choose option</li>
+                      <li data-value="red">Red</li>
+                      <li data-value="black">Black</li>
+                      <li data-value="green">Green</li>
+                      <li data-value="blue">Blue</li>
+                      <li data-value="grey">Grey</li>
+                      <li data-value="pink">Pink</li>
+                      <li data-value="yellow">Yellow</li>
+                    </ul>
+                  </div>
+
+                  <input type="hidden" id="filter-color" value="all" />
+                </div>
+
+                <div class="filter-group">
+                  <span id="filter-category-label" class="filter-group-label"
+                    >Category</span
+                  >
+
+                  <div
+                    class="sorting-dropdown filter-dropdown"
+                    data-filter-id="filter-category"
+                    aria-labelledby="filter-category-label"
+                  >
+                    <button class="sorting-dropdown-button" type="button">
+                      <span class="sorting-dropdown-label">Choose option</span>
+                      <img
+                        src="/src/assets/img/arrow-dropdown.svg"
+                        alt=""
+                        class="sorting-dropdown-icon"
+                      />
+                    </button>
+                    <ul class="sorting-dropdown-menu">
+                      <li data-value="all">Choose option</li>
+                      <li data-value="suitcases">Suitcases</li>
+                      <li data-value="kids' luggage">Kids' luggage</li>
+                      <li data-value="luggage sets">Luggage sets</li>
+                      <li data-value="carry-ons">Carry-ons</li>
+                    </ul>
+                  </div>
+
+                  <input type="hidden" id="filter-category" value="all" />
+                </div>
+
+                <div class="filter-group">
+                  <span id="filter-sales-label" class="filter-group-label"
+                    >Sales</span
+                  >
+                  <div
+                    class="filter-radio-group"
+                    role="radiogroup"
+                    aria-labelledby="filter-sales-label"
+                  >
+                    <label class="radio-option">
+                      <input
+                        type="radio"
+                        name="filter-sales"
+                        value="sales-only"
+                      />
+                      <span class="radio-circle"></span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="filters-actions">
+                <button
+                  type="button"
+                  id="btn-filters-clear"
+                  class="btn btn-secondary"
+                >
+                  Clear filters
+                </button>
+                <button
+                  type="button"
+                  id="btn-filters-toggle"
+                  class="btn btn-secondary"
+                >
+                  Hide filters
+                </button>
+              </div>
+            </div>
+
+            <div class="products-carousel" id="products-carousel">
+              <div class="new-catalog-products-container"></div>
+              <div class="paginator-controls">
+                <button
+                  id="prevBtn-products"
+                  class="paginator-arrow paginator-arrow-prev"
+                  aria-label="Previous page"
+                >
+                  Previous
+                </button>
+                <div class="paginator-pages" id="products-pages"></div>
+                <button
+                  id="nextBtn-products"
+                  class="paginator-arrow paginator-arrow-next"
+                  aria-label="Next page"
+                >
+                  Next
+                </button>
+              </div>
+            </div>
+          </div>
+          <aside class="top-best-sets-right-container">
+            <div class="search-bar">
+              <input
+                type="search"
+                id="search-bar"
+                class="search-bar-input"
+                placeholder="Search Models"
+                aria-label="Search models"
+              />
+              <button
+                type="button"
+                class="search-bar-button"
+                aria-label="Search"
+              ></button>
+            </div>
+            <div class="best-sets-products-container">
+              <h4>Top Best Sets</h4>
+              <div class="best-sets-products"></div>
+            </div>
+          </aside>
+        </div>
+      </div>
+      <section id="site-benefits"></section>
+    </main>
+    <footer id="site-footer"></footer>
+
+    <script type="module" src="/src/js/main.js"></script>
+  </body>
+</html>

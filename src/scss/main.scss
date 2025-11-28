@@ -1,0 +1,499 @@
+@use './abstracts/index'as *;
+@use './base/reset';
+@use './base/fonts';
+@use 'components/catalog-card'as *;
+@use 'components/benefits'as *;
+@use 'components/forms'as *;
+@use 'components/product-card'as *;
+@use 'components/login-modal'as *;
+@use './components/buttons';
+@use 'pages/catalog';
+@use 'pages/about';
+@use 'pages/product-details';
+@use 'pages/contact_us';
+@use 'pages/cart';
+@use 'layouts/header';
+@use 'layouts/footer';
+
+// ===============================
+// Hero
+// ===============================
+$hero-bg: $light-grey;
+$hero-padding-y-desktop: 8rem;
+$hero-padding-y-mobile: 4rem;
+$hero-gap: 2rem;
+$hero-title-max-width: 30.625rem;
+$hero-img-max-height: 40.0625rem;
+
+
+// ===============================
+// Discount section tokens
+// ===============================
+$discount-offset-y: -6rem;
+$discount-padding-x-desktop: 4rem;
+$discount-padding-x-mobile: 2rem;
+$discount-padding-y-desktop: 4rem;
+$discount-img-max-height: 35.375rem;
+$discount-media-gap: 1rem;
+$discount-headshot-size: 5.3125rem;
+$discount-overlay-bg: $overlay;
+
+// ===============================
+// Customer cards
+// ===============================
+$customers-padding-bottom: 7rem;
+$customers-grid-gap: 2rem;
+
+// ===============================
+// Offer section tokens
+// ===============================
+$offer-min-height: 25.4375rem;
+$offer-padding-x-desktop: 6rem;
+$offer-padding-x-tablet: 3rem;
+$offer-padding-x-mobile: 1.5rem;
+$offer-padding-y-mobile: 3rem;
+$offer-grid-gap: 2rem;
+$offer-discount-font-desktop: 13.9rem;
+$offer-discount-font-fluid: clamp(4rem, 14vw, $offer-discount-font-desktop);
+$offer-heading-font-desktop: $font-size-40;
+$offer-heading-font-mobile: $font-size-30;
+
+// ----------------------HEADER---------------------------
+#site-header {
+  background-color: $white;
+  position: sticky;
+  top: 0;
+  z-index: 998;
+}
+
+// ----------------------MAIN----------------------------
+.title-center {
+  margin: 0;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: $font-size-17;
+  margin: 0;
+  padding-bottom: 3.125rem;
+}
+
+.subtitle-carusel {
+  text-align: center;
+  font-size: $font-size-17;
+  margin: 0;
+  padding-bottom: 0;
+}
+
+.layout-container {
+  max-width: $layout-max-width;
+  margin: 0 auto;
+}
+
+.padding-top-6 {
+  padding-top: $space-6;
+}
+
+.padding-bottom-6 {
+  padding-bottom: $space-6;
+}
+
+// BUTTON
+.button-pink {
+  background-color: $pink;
+  color: $white;
+  font-family: $font-montserrat;
+  font-weight: $font-weight-bold;
+  border: none;
+  padding: 0 1.5rem;
+  margin: 0;
+  cursor: pointer;
+
+  &-60 {
+    height: 3.75rem;
+    font-size: $font-size-18;
+
+  }
+
+  &-40 {
+    height: 2.5rem;
+    font-size: $font-size-17;
+  }
+}
+
+.main-description {
+  margin: 0;
+  font-size: $font-size-17;
+  font-weight: $font-weight-regular;
+  line-height: $line-height2;
+  color: $grey-text-bg;
+}
+
+
+// ----------------------HERO----------------------------
+.hero {
+  background-color: $hero-bg;
+  padding: $hero-padding-y-desktop 0;
+
+  .center-container {
+    padding-top: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: $hero-gap;
+    position: relative;
+  }
+
+  .left-side {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 1.5rem;
+
+    h2 {
+      margin: 0;
+      text-align: left;
+    }
+
+    .hero-title {
+      max-width: $hero-title-max-width;
+    }
+  }
+
+  .hero-right-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .img-holder {
+      max-width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        width: 100%;
+        height: auto;
+        max-height: $hero-img-max-height;
+        display: block;
+        object-fit: cover;
+      }
+    }
+  }
+
+  // Tablet & down: stack columns
+  @include respond(md) {
+    padding: $hero-padding-y-mobile 0;
+
+    .center-container {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+
+    .left-side {
+      align-items: center;
+
+      h2 {
+        text-align: center;
+      }
+
+      .hero-title {
+        max-width: 100%;
+      }
+    }
+
+    .hero-right-side {
+      margin-top: 2rem;
+    }
+  }
+
+  // Small phones: slightly tighter gap
+  @include respond(sm) {
+    .center-container {
+      gap: 1.5rem;
+    }
+  }
+}
+
+// ===============================
+// Discount section
+// ===============================
+.discount-section {
+  margin-top: $discount-offset-y;
+  position: relative;
+  z-index: 2;
+
+  .center-container {
+    background-color: $white;
+    box-shadow: $box-shadow;
+    display: grid;
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    align-items: stretch;
+    overflow: hidden;
+
+    @include respond(md) {
+      grid-template-columns: 1fr;
+    }
+
+    .left-side {
+      padding: $discount-padding-y-desktop $discount-padding-x-desktop;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+
+      @include respond(sm) {
+        padding: 2.5rem $discount-padding-x-mobile;
+      }
+    }
+
+    .img-holder {
+      width: 100%;
+      height: 100%;
+      background-color: $light-grey;
+
+      img {
+        width: 100%;
+        height: 100%;
+        max-height: $discount-img-max-height;
+        object-fit: cover;
+        display: block;
+      }
+    }
+  }
+
+  // Media (avatar + name/text)
+  .discount-media-container {
+    display: flex;
+    gap: $discount-media-gap;
+    align-items: center;
+
+    .img-holder-headshot {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: $discount-headshot-size;
+      height: $discount-headshot-size;
+      background-color: $light-grey;
+      border-radius: 50%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+        display: block;
+      }
+    }
+
+    .discount-media-text-container {
+      display: flex;
+      flex-direction: column;
+
+      .discount-media-text-title {
+        margin: 0;
+        font-size: $font-size-20;
+        font-family: $font-montserrat;
+        font-weight: $font-weight-bold;
+      }
+    }
+  }
+
+  // Right side overlay block
+  .right-side {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    color: $white;
+
+    h2 {
+      margin: 0;
+      text-align: left;
+      color: $white;
+      position: relative;
+      z-index: 2;
+    }
+
+    .right-side-body {
+      position: absolute;
+      inset: 0;
+      padding: $discount-padding-y-desktop;
+      background-color: $discount-overlay-bg;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1rem;
+
+      @include respond(sm) {
+        padding: 2rem;
+      }
+    }
+
+    .main-description {
+      color: $white;
+      position: relative;
+      z-index: 2;
+    }
+  }
+}
+
+// ----------------------TRAVEL SUITCASES---------------------------
+
+.travel-suitcase-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+// Customer cards
+$customers-padding-bottom: 7rem;
+$customers-grid-gap: 2rem;
+
+.customers {
+  padding-bottom: $customers-padding-bottom;
+  text-align: center;
+
+  .title-center {
+    margin-bottom: 0.5rem;
+  }
+
+  .subtitle {
+    margin-top: 0;
+    margin-bottom: 2rem;
+  }
+
+  .customer-container {
+    display: grid;
+    gap: $customers-grid-gap;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    // tablet / smaller laptop
+    @include respond(md) {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    // mobile → 1 column
+    @include respond(sm) {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .customer-slot {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+
+    > .costumer-card-container {
+      width: 100%;
+      max-width: 26.25rem;
+    }
+  }
+}
+
+
+// OFFER
+.offer-img {
+  min-height: $offer-min-height;
+  background-image: url("/src/assets/img/offer.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+// Overlay + content
+.offer-center {
+  position: relative;
+  z-index: 1;
+  min-height: $offer-min-height;
+  padding: 0 $offer-padding-x-desktop;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: $offer-grid-gap;
+  align-items: center;
+  background-color: $overlay;
+  color: $white;
+
+  p {
+    margin: 0;
+  }
+
+  .main-description {
+    color: $white;
+  }
+
+  .discount-num {
+    font-size: $offer-discount-font-fluid;
+    font-weight: $font-weight-black;
+    line-height: 1;
+    color: $white;
+  }
+}
+
+// Left side
+.offer-left-side {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+// Right side (headline + CTA)
+.offer-right-side {
+  padding-left: 8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  button {
+    align-self: flex-start;
+  }
+}
+
+// Text block inside right side
+.offer-body-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 1rem;
+  font-size: $offer-heading-font-desktop;
+  font-weight: $font-weight-black;
+  color: $white;
+}
+
+// Tablet & below
+@include respond(md) {
+  .offer-center {
+    grid-template-columns: 1fr;
+    row-gap: $offer-grid-gap;
+    padding: $offer-padding-y-mobile $offer-padding-x-tablet;
+    text-align: center;
+  }
+
+  .offer-left-side,
+  .offer-right-side {
+    align-items: center;
+  }
+
+  .offer-right-side {
+    padding-left: 0;
+
+    button {
+      align-self: center;
+    }
+  }
+
+  .offer-body-text {
+    align-items: center;
+    font-size: $offer-heading-font-mobile;
+  }
+}
+
+
+@include respond(sm) {
+  .offer-center {
+    padding-inline: $offer-padding-x-mobile;
+  }
+}
