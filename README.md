@@ -1,4 +1,4 @@
-# Best Shop – Front-End
+# Best Shop - travel suitcase webshop development (HTML/SCSS/JS)
 
 Best Shop front-end application built with Vite, Sass, ESLint, and Stylelint.
 
